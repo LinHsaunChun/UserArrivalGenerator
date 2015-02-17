@@ -46,8 +46,8 @@ public class Generator {
 			 *			Step.2-1:計算case1和case2需要的使用者數量(人數，採無條件近位)
 			 *		Step.3:產生case1和case2所需要的人數
 			 *			Step.3-1: 
-			 *				Pr(系統處理時間區間上限 < 使用者抵達間隔時間 < 系統處理時間區間上限)=case1的比例
-			 *				Pr( 系統處理時間區間下限<使用者抵達間隔時間)=case2的比例 或 Pr( 系統處理時間區間上限>使用者抵達間隔時間)=case2
+			 *				Pr(系統處理時間區間上界 < 使用者抵達間隔時間 < 系統處理時間區間上界)=case1的比例
+			 *				Pr( 系統處理時間區間下界<使用者抵達間隔時間)=case2的比例 或 Pr( 系統處理時間區間上界>使用者抵達間隔時間)=case2
 			 *		Step.4:驗證產生的抵達分配是否和宣稱相符
 			 *
 			 *	補充： exponential distribution with parameter \lambda(\lambda e^{\lambda x})
@@ -71,7 +71,7 @@ public class Generator {
 		System.out.println("=====開始進行參數設定=====");
 		
 		/*
-		 * Step.0: 設定系統平均運行時間95%信賴區間上限與下限
+		 * Step.0: 設定系統平均運行時間95%信賴區間上界與下界
 		 */
 			double Upper =-1;
 			double Lowwer =0;
@@ -79,14 +79,14 @@ public class Generator {
 			{
 			java.util.Scanner UpperBoundSystemProcessTimeInput = new
 				java.util.Scanner(System.in);
-			System.out.println("請輸入系統平均運行時間95%信賴區間上限");
+			System.out.println("請輸入系統平均運行時間95%信賴區間上界");
 			double UpperBoundSystemProcessTime = UpperBoundSystemProcessTimeInput.nextDouble();
 			java.util.Scanner LowwerBoundSystemProcessTimeInput = new
 					java.util.Scanner(System.in);			
-			System.out.println("請輸入系統平均運行時間95%信賴區間下限");
+			System.out.println("請輸入系統平均運行時間95%信賴區間下界");
 			double LowwerBoundSystemProcessTime = LowwerBoundSystemProcessTimeInput.nextDouble();
-			System.out.println("您輸入的系統95%平均運行時間信賴區間上限與下限為");
-			System.out.print("(上限,下限)=");
+			System.out.println("您輸入的系統95%平均運行時間信賴區間上界與下界為");
+			System.out.print("(上界,下界)=");
 			System.out.print("(");
 			System.out.print(UpperBoundSystemProcessTime);
 			System.out.print(",");
@@ -102,12 +102,12 @@ public class Generator {
 				Upper=UpperBoundSystemProcessTime;
 				if(UpperBoundSystemProcessTime<LowwerBoundSystemProcessTime)
 				{
-					System.out.println("您輸入的信賴區間上限與下限有誤，請重新確認。");			
+					System.out.println("您輸入的信賴區間上界與下界有誤，請重新確認。");			
 				}
 			
 			}
 			/*
-				 * 確保上下限邏輯輸入正確
+				 * 確保上下界邏輯輸入正確
 				 */
 		/*
 		 * Step.1:設定實驗的使用者數量與速率
